@@ -26,19 +26,27 @@ $ python eval.py (modify eval.py   img_file = ("location to test image")
 
 
 
-
+# MOVE THE ROBOT
 If everything is OK, then start move the robot
 build the robot package
 then roscd to the directory that contains the trained model (for example, params.meta, params.index...)
+
 $ python force_listener_wrs.py
+
 open another terminal (in the same directory)
+
 $ python send_tf_wrs.py 
+
 open another terminal (in the same directory)
-$ python detect_holes_wrs.py (after the object can be seen, press 's' to detect holes, should wait a moment until the model is loaded, otherwise you will get an error)
+
+$ python detect_holes_wrs.py (after the object can be seen, press 's' to detect holes, should wait a 
+
+moment until the model is loaded, otherwise you will get an error)
 
 check the hole locations using rosrun rviz , show tf 
 
 open another terminal (in the same directory)
+
 $ python robot_execute_wrs.py
 
 
