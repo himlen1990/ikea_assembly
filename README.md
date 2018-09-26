@@ -1,6 +1,7 @@
-#USAGE
+# USAGE
 
-#CREATE DATASET
+# CREATE DATASET
+
 connet to hsr then
 $ cd ...to your workplace
 $ mkidr dataset
@@ -9,15 +10,18 @@ $ python get_data.py
 
 separate the dataset to train and test (leave about 15 image for test)
 
-#ANNOTATION
+# ANNOTATION
+
 $ python label_tool.py
 (after annotated an image, press 'n' to save the label and turn to the next image)
 
-#TRAIN
+# TRAIN
+
 $ python train.py
 (train loss should lower than 100, test loss may around 8000?)
 
-#EVAL
+# EVAL
+
 $ python eval.py (modify eval.py   img_file = ("location to test image")
 
 
@@ -39,3 +43,6 @@ $ python robot_execute_wrs.py
 
 
 hand over a leg to the robot, and press its hand, it should start assembly, after it finishs one leg, hand over another leg and press its hand....
+
+video
+https://drive.google.com/open?id=1CG60ZPr5YSo6Ciz-UqNyU2JtcfcsY9HU
