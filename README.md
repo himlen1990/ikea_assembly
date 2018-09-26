@@ -1,5 +1,7 @@
 # USAGE
 
+cd to ikea_ros_pkg
+
 # CREATE DATASET
 
 connet to hsr then
