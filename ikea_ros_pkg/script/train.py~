@@ -1,0 +1,67 @@
+from read_data import dataReader
+import numpy as np
+import tensorflow as tf
+from model import regression_model
+import skimage.io as io
+import cv2
+
+def train():
+    sess = tf.Session()
+    model = regression_model(sess)
+    dr = dataReader('./dataset')
+    
+    iteration = 15000
+    saver = tf.train.Saver()
+    test_image_batch, test_label_batch = dr.get_test_data(10)
+    #test_image_batch = test_image_batch - 144
+    for i in range(iteration):
+        train_image_batch, train_label_batch = dr.sample_batch(5)
+        #train_image_batch = train_image_batch-144
+        model.learn(train_image_batch, train_label_batch)
+        if i % 20 == 0:
+            print "iteration--- ",i
+            print "test loss"
+            model.eval(train_image_batch, train_label_batch)
+            model.eval(test_image_batch, test_label_batch)
+    saver.save(sess, './params')
+    #test_image = image_batch[-1,:,:,:]
+    #result = model.predict(test_image)
+    #print result
+    #a = test_image.astype(np.uint8)
+    #io.imshow(a)
+    #io.show()
+
+
+def eval():
+    dr = dataReader('./dataset')
+    sess = tf.Session()
+    model = regression_model(sess)
+    saver = tf.train.Saver()
+    saver.restore(sess, "./models/params")
+    #test_images, test_labels = dr.get_test_data(20)
+    img_file = ("./test_set/frame0295.jpg")
+    #img_file = ("./dataset/frame0100.jpg")
+    test_image = cv2.imread(img_file)
+    label_file = img_file[:-4]+".npy"
+    #test_label = np.load(label_file)
+    test_idx = 1
+    cell_size = 8
+    boundary = cell_size * cell_size
+    result = model.predict(test_image)
+    mask = np.reshape(result[:,:boundary],[cell_size,cell_size])
+    x = np.reshape(result[:,boundary:boundary*2],[cell_size,cell_size])
+    y = np.reshape(result[:,boundary*2:],[cell_size,cell_size])
+    restruct_label = np.stack((mask,x,y),axis=-1)
+    
+    test_label = []
+    #print test_label
+    #print restruct_label
+    dr.show_label(test_image,restruct_label,test_label)
+    #io.imshow(test_images[0])
+    #io.show()
+
+
+if __name__=='__main__':
+    train()
+    #eval()
+    
