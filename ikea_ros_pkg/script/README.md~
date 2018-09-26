@@ -1,5 +1,0 @@
-#USAGE
-
-#CREATE DATASET
-connet to hsr then
-$ python get_data.py
