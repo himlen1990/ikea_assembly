@@ -29,6 +29,11 @@ $ python eval.py (modify eval.py   img_file = ("location to test image")
 
 
 # MOVE THE ROBOT
+
+use a blank MAP before execute!!!!!!! 
+
+(because the output tf frame is relative to the map, once the robot adjust its location, the ik will goes wrong)
+
 If everything is OK, then start move the robot
 build the robot package
 then roscd to the directory that contains the trained model (for example, params.meta, params.index...)
