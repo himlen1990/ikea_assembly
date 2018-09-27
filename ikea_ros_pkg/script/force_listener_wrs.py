@@ -84,6 +84,7 @@ def force_cb(msg):
 
     hole_frame_name = 'hole%d' %(hole_id)
     if move_to_global_init_flag:
+        # wait for hand over
         if not hand_over_flag:
             if not get_init_weight_flag:
                 if natural_weight_counter < 5:
@@ -128,7 +129,7 @@ def force_cb(msg):
                 if motion_start_flag:
                     force_fb_buffer.append(msg.wrench.force.x)
                 elif motion_finish_flag:
-                    print "????????"
+                    #print "????????"
                     print len(force_fb_buffer)
                     print min(force_fb_buffer)
                     force_pub.publish(min(force_fb_buffer))

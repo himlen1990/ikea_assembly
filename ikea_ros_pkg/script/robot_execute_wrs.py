@@ -28,7 +28,7 @@ whole_body.impedance_config = 'compliance_hard'
 motion_signal_pub = rospy.Publisher('ikea_motion_signal', String, queue_size=1)
 
 def object_weight_cb(msg):
-    global object_weight,hole_id
+    global object_weight,hole_id,next_z, next_y
     object_weight = msg.data
     print "object_weight",object_weight
     hole_frame_name = 'hole%d' %(hole_id)
