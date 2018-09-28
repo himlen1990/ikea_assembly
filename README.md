@@ -29,9 +29,9 @@ $ python eval.py (modify eval.py   img_file = ("location to test image")
 
 # IMPORTANT NOTICE (update on 27/09/2018)
 
-use a blank MAP (do not load any map) before execute!!!!!!! (check it on rviz, map topic) 
+please use a blank MAP (do not load any maps) before execute!!!!!!! (check it on rviz, map topic) 
 
-(because the output tf frame is relative to the map, once the robot adjust its location after the first move, the ik will goes wrong)
+(because the output tf frame is relative to the map, once the robot adjusts its location after the first move, the locations of the holes will also change)
 
 
 # MOVE THE ROBOT
