@@ -27,12 +27,14 @@ $ python train.py
 $ python eval.py (modify eval.py   img_file = ("location to test image")
 
 
+# IMPORTANT NOTICE (update on 27/09/2018)
+
+use a blank MAP (do not load any map) before execute!!!!!!! (check it on rviz, map topic) 
+
+(because the output tf frame is relative to the map, once the robot adjust its location after the first move, the ik will goes wrong)
+
 
 # MOVE THE ROBOT
-
-use a blank MAP before execute!!!!!!! 
-
-(because the output tf frame is relative to the map, once the robot adjust its location, the ik will goes wrong)
 
 If everything is OK, then start move the robot
 build the robot package
